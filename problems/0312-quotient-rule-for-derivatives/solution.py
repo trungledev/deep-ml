@@ -22,13 +22,13 @@ def quotient_rule_derivative(g_coeffs: list, h_coeffs: list, x: float) -> float:
     df_gx = 0.0
     hx = 0.0
     df_hx = 0.0
-    for i in range(m):
-        gx += g_coeffs[i] * (x**(m-i))
-        if 1 - i >= 0:
-            df_gx += (m -1 -i) * g_coeffs[i] * (x ** (m -1 -i))
-    for i in range(n):
-        hx += h_coeffs[i] * (x**(n-i))
-        if 1 - i >= 0:
-            df_hx += (n - 1 -i) * h_coeffs[i] * (x ** (n - 1 -i))
+    gx, df_gx = calc(g_coeffs[:m], x)
+    hx, df_hx = calc(h_coeffs[:n], x)
 
     return (df_gx * hx - gx * df_hx)/hx **2
+def calc(coeffs, x):
+    p = dp = 0
+    for a in coeffs:
+        dp = dp * x + p
+        p = p * x + a
+    return p * x, dp * x + p
