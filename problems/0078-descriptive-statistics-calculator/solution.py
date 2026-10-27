@@ -13,15 +13,7 @@ def descriptive_statistics(data: list | np.ndarray) -> dict:
     """
     # Your code here
     n = len(data)
-
-    mean = 0
-    median = 0
-    mode = 0
-    variance = 0
-    standard_deviation = 0
-    x_25th_percentile, x_50th_percentile, x_75th_percentile = 0, 0, 0
-    interquartile_range = 0
-    
+  
     mean = np.mean(data)
     median = np.median(data)
 
